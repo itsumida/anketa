@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Anketa Natijasi</h2>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Ona: {{ anketa.mother.last_name }} {{ anketa.mother.first_name }}</h5>
+      <p class="card-text">Farzand tug‘ilgan sana: {{ anketa.child.birth_date }}</p>
+      <p class="card-text">Farzand tug‘ilgan vazni: {{ anketa.child.birth_weight }} kg</p>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <strong>Umumiy ball:</strong> {{ anketa.score }} <br>
+    <strong>Xavf darajasi:</strong> {{ anketa.risk_category }}
+  </div>
+
+  <div class="text-end">
+    <a href="{% url 'create_child' mother_id=anketa.mother.id %}" class="btn btn-outline-primary">
+      + Yana bir farzand uchun anketa to‘ldirish
+    </a>
+  </div>
+{% endblock %}

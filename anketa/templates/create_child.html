@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Bola ma'lumotlari</h2>
+  <p><strong>Ona:</strong> {{ mother.first_name }} {{ mother.last_name }}</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Keyingi bosqich → Anketa</button>
+  </form>
+{% endblock %}
