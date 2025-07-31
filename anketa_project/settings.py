@@ -28,7 +28,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "fallback-secret-key-for-dev")
 DEBUG = False
 
 # ✅ Your Render domain
-ALLOWED_HOSTS = ['anketa.onrender.com']
+ALLOWED_HOSTS = ['anketa-survey.onrender.com']
+
 
 # Application definition
 
