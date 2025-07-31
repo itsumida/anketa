@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,14 +21,14 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-xkm7&70zw8j10k&&lk6_x+sledr#teyx7c=j%w8juu&e#n7siv"
+## ✅ Secret key from environment
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "fallback-secret-key-for-dev")
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# ✅ Never run with DEBUG=True in production
 DEBUG = False
 
+# ✅ Your Render domain
 ALLOWED_HOSTS = ['anketa.onrender.com']
-
 
 # Application definition
 
