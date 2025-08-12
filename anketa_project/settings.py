@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Quick-start development settings - unsuitable for production
@@ -25,10 +25,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "fallback-secret-key-for-dev")
 
 # ✅ Never run with DEBUG=True in production
-DEBUG = False
+DEBUG = True 
 
 # ✅ Your Render domain
-ALLOWED_HOSTS = ['anketa-survey.onrender.com']
+ALLOWED_HOSTS = ['anketa-survey.onrender.com', '127.0.0.1', 'localhost']
+
 
 
 # Application definition

@@ -12,13 +12,26 @@ from .constants import (
     FOOD_CHOICES, FOOD_POINTS, AGE_CHOICES, AGE_POINTS
 )
 
+from django.db import models
+from django.core.validators import RegexValidator
+
+
+passport_validator = RegexValidator(
+    regex=r'^[A-Z]{2}\d{7}$',
+    message='Passport raqami 2 katta harf va undan so\'ng 7 ta raqam bilan davom etgan bo\'lishi kerak (masalan, HA1234567).'
+)
+
+address_validator = RegexValidator(
+    regex=r'^[A-Za-zÆØÅæøå\-\.\s]+\s+\d+[A-Za-zÆØÅæøå]?$',
+    message='Manzilni ko\'cha nomi va uy raqami shaklda yozing (masalan, Namozgoh 15).'
+)
+
 class Mother(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     fathers_name = models.CharField(max_length=100)
 
     age_category = models.CharField(max_length=20, choices=AGE_CHOICES)
-
     bmi_category = models.CharField(max_length=20, choices=BMI_CHOICES)
     education = models.CharField(max_length=20, choices=EDUCATION_CHOICES)
     income_level = models.CharField(max_length=20, choices=INCOME_CHOICES)
@@ -27,8 +40,16 @@ class Mother(models.Model):
     knowledge_level = models.CharField(max_length=20, choices=KNOWLEDGE_CHOICES)
     mood_last_2_weeks = models.CharField(max_length=20, choices=MOOD_CHOICES)
 
+    passport_number = models.CharField(
+        max_length=50,
+        validators=[passport_validator]
+    )
+    address = models.TextField(
+        validators=[address_validator]
+    )
+
     def __str__(self):
-       return f"{self.last_name} {self.first_name} {self.fathers_name}"
+        return f"{self.last_name} {self.first_name} {self.fathers_name}"
 
 class Child(models.Model):
     mother = models.ForeignKey(Mother, on_delete=models.CASCADE, related_name="children")

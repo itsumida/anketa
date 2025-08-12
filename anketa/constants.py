@@ -120,7 +120,7 @@ BREASTFEEDING_POINTS = {
 # Qo‘shimcha ovqat berish vaqti
 FOOD_CHOICES = [
     ('6_oydan_keyin', '6 oydan keyin'),
-    ('noto‘g‘ri_vaqt', '<6 yoki 6-oyda'),
+    ('noto‘g‘ri_vaqt', '<6'),
 ]
 
 FOOD_POINTS = {
